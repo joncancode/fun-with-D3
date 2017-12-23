@@ -50,11 +50,37 @@ function visualizeBalls() {
         return d + (i * 100)
     })
     .attr("cy", function(d){
-        return d
+        return d + 100
     })
     .attr("r", function(d){
-        return d
+        return d 
     })
 }
 
 visualizeBalls()
+
+function scaling(){
+    let graphData = [100, 40, 500]
+    , w = 600
+    , h = 500
+
+    let canvas = d3.select(".graphContainer")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+ 
+    let graphBars = canvas.selectAll("rect")
+        .data(graphData)
+        .enter()
+        .append("rect")
+        .attr("fill", "orange")
+        .attr("width", function (d){
+            return d
+        })
+        .attr("height", 30)
+        attr("y", function (d, i){
+            return i * 50
+        })
+}
+
+//scaling()
